@@ -33,6 +33,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use jquery and bootstrap
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'bootstrap'
+
 # Use haml
 gem 'haml-rails'
 gem 'erb2haml'
@@ -47,6 +52,11 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails', '~> 4.8'
   gem 'faker', '~>1.8'
+
+  gem 'guard-rspec'
+  gem 'spring-commands-rspec'
+
+  gem 'rails-controller-testing'
 end
 
 group :development do
