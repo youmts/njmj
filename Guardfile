@@ -59,8 +59,8 @@ guard :rspec, cmd: "bundle exec spring rspec --color --format documentation" do
   watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
 
   # Capybara features specs
-  watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
-  watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
+  watch(rails.view_dirs)     { "#{rspec.spec_dir}/system" }
+  watch(rails.layouts)       { "#{rspec.spec_dir}/system" }
 
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
