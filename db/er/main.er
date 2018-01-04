@@ -1,3 +1,5 @@
+# https://github.com/BurntSushi/erd
+
 # Entities are declared in '[' ... ']'. All attributes after the entity header
 # up until the end of the file (or the next entity declaration) correspond
 # to this entity.
