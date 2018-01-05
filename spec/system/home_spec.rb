@@ -7,6 +7,10 @@ feature 'Home', type: :system do
 
     click_button 'ゲームを開始'
 
+    player = Player.last
+
+    expect(page).to have_content 'こんにちは'
+    expect(page).to have_content player.name
     expect(page).to have_content '他のプレイヤーを探しています'
   end
 end
