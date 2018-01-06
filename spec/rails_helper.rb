@@ -55,7 +55,10 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # factory
+  config.include FactoryBot::Syntax::Methods
 
+  # for headless
   config.before(:each) do |example|
     if example.metadata[:type] == :system
       driven_by :selenium_chrome_headless, screen_size: [1400, 1400]

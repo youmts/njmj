@@ -13,7 +13,7 @@ RSpec.describe PlayersController, type: :controller do
 
     context 'プレイヤーになっている場合' do
       before :each do
-        player = Player.create
+        player = create(:player)
         session[:player_id] = player.id
       end
 

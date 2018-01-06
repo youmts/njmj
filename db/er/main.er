@@ -11,7 +11,7 @@ name
 *id
 name
 
-[Table]
+[Room]
 id
 
 [Game]
@@ -43,8 +43,8 @@ player_id
 # 0 or more      *
 # 1 or more      +
 Player *--? User
-Player +--* Table
-Game +--1 Table
+Player +--* Room
+Game +--1 Room
 Deck 1--1 Game
 CardClass +--1 Deck
 CardEntity +--1 CardClass

@@ -6,7 +6,8 @@ class PlayersController < ApplicationController
   end
 
   def create
-    player = Player.create(name: Faker::FunnyName.name)
+    # TODO: roomモデルに入れるroomを検索させるようにする
+    player = Player.create(name: Faker::FunnyName.name, room: Room.create())
     to_be_player(player)
     redirect_to players_url
   end
