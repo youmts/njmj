@@ -1,2 +1,10 @@
-%h1 Rooms#index
-%p Find me in app/views/rooms/index.html.haml
+.container-fluid
+  .row
+    %nav.col-sm-3.col-md-2.d-none.d-sm-block.bg-light
+      %ul.nav.flex-column
+        - @room.players.each do |player|
+          %li.nav-item
+            = player.name
+    %main.col-sm-9.ml-sm-auto.col-md-10.pt-3{ role: 'main' }
+      %p こんにちは、#{@player.name}
+      %p 他のプレイヤーを探しています

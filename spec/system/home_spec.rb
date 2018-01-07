@@ -7,10 +7,18 @@ feature 'Home', type: :system do
 
     click_button 'ゲームを開始'
 
-    player = Player.last
+    yamada = Player.last
 
     expect(page).to have_content 'こんにちは'
-    expect(page).to have_content player.name
     expect(page).to have_content '他のプレイヤーを探しています'
+    expect(page).to have_content yamada.name
+
+    tanaka = create(:player, name: 'Tanaka')
+    suzuki = create(:player, name: 'Suzuki')
+
+    visit rooms_path
+
+    expect(page).to have_content tanaka.name
+    expect(page).to have_content suzuki.name
   end
 end

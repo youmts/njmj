@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :room do
     name "Name"
-    status :open
+    status :before_game
 
     transient do
       player_count 1

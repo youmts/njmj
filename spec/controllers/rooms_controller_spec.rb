@@ -2,16 +2,30 @@ require 'rails_helper'
 
 RSpec.describe RoomsController, type: :controller do
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+  describe 'GET #index' do
+
+    context 'プレイヤーになっていない場合' do
+      it 'redirect to root' do
+        get :index
+        expect(response).to redirect_to root_url
+      end
     end
 
-    it "renders :index view" do
-      get :index
-      expect(response).to render_template :index
+    context 'プレイヤーになっている場合' do
+      before :each do
+        player = create(:player)
+        session[:player_id] = player.id
+      end
+
+      it 'returns http success' do
+        get :index
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'renders the :index template' do
+        get :index
+        expect(response).to render_template :index
+      end
     end
   end
-
 end

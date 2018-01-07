@@ -9,7 +9,11 @@ module PlayersHelper
     end
   end
 
-  def as_player?
+  def playing?
     !current_player.nil?
+  end
+
+  def redirect_not_playing
+    redirect_to(root_url) unless playing?
   end
 end

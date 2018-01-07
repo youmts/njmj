@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
-  get 'rooms/index'
-
-  get 'tables/index'
-
-  get 'players/index'
-
-  get 'home/index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root to: 'home#index'
-  resources :players, only: [:index, :create]
+  resources :players, only: [:create]
+  resources :rooms, only: [:index]
 end
