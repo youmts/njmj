@@ -25,18 +25,10 @@ ActiveRecord::Schema.define(version: 20180106222106) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
+    t.integer "status", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "tables", force: :cascade do |t|
-    t.string "name"
-    t.bigint "player_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_tables_on_player_id"
   end
 
   add_foreign_key "players", "rooms"
-  add_foreign_key "tables", "players"
 end
