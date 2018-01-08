@@ -13,8 +13,8 @@ feature 'Home', type: :system do
     expect(page).to have_content '他のプレイヤーを探しています'
     expect(page).to have_content yamada.name
 
-    tanaka = create(:player, name: 'Tanaka')
-    suzuki = create(:player, name: 'Suzuki')
+    tanaka = create(:player, name: 'Tanaka', room: yamada.room)
+    suzuki = create(:player, name: 'Suzuki', room: yamada.room)
 
     visit rooms_path
 

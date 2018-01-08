@@ -68,4 +68,6 @@ RSpec.configure do |config|
       driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
     end
   end
+
+  config.include PlayersHelper
 end

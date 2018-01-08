@@ -13,8 +13,7 @@ RSpec.describe RoomsController, type: :controller do
 
     context 'プレイヤーになっている場合' do
       before :each do
-        player = create(:player)
-        session[:player_id] = player.id
+        to_be_player(create(:player))
       end
 
       it 'returns http success' do
