@@ -4,31 +4,27 @@
 # up until the end of the file (or the next entity declaration) correspond
 # to this entity.
 [User]
-*id
 name
 
 [Player]
-*id
 name
 
 [Room]
-id
+
+[Message]
+message
 
 [Game]
-*id
 
 [Deck]
-*id
 game_id
 
 [CardClass]
-*id
 deck_id
 image
 nickname
 
 [CardEntity]
-*id
 deck_id
 card_class_id
 player_id
@@ -43,8 +39,10 @@ player_id
 # 0 or more      *
 # 1 or more      +
 Player *--? User
-Player +--* Room
+Player +--1 Room
 Game +--1 Room
+Message *--1 Room
+Message *--1 Player
 Deck 1--1 Game
 CardClass +--1 Deck
 CardEntity +--1 CardClass

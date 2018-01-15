@@ -1,6 +1,10 @@
 module PlayersHelper
   def to_be_player(player)
     session[:player_id] = player.id
+    cookies.signed[:player_id] = {
+      value: player.id,
+      expires: 1.day.from_now,
+    }
   end
 
   def current_player
