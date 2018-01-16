@@ -1,14 +1,14 @@
 module PlayersHelper
   def to_be_player(player)
-    session[:player_id] = player.id
     cookies.signed[:player_id] = {
       value: player.id,
       expires: 1.day.from_now,
+      httponly: true,
     }
   end
 
   def current_player
-    if (player_id = session[:player_id])
+    if (player_id = cookies.signed[:player_id])
       @current_player ||= Player.find(player_id)
     end
   end

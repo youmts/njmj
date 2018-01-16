@@ -13,9 +13,10 @@ RSpec.describe PlayersController, type: :controller do
       }.to change(Player, :count).by(1)
     end
 
-    it 'add player_id to session' do
-      post :create
-      expect(playing?).to be_truthy
+    it 'change playing?' do
+      expect{
+        post :create
+      }.to change{ playing? }.from(false).to(true)
     end
 
     context '所属可能な部屋が存在しないとき' do
