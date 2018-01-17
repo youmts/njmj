@@ -4,6 +4,6 @@ class RoomsController < ApplicationController
   def index
     @player = current_player
     @room = current_player.room
-    @messages = @room.messages
+    @messages = @room.messages.includes(:player)
   end
 end
