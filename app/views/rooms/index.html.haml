@@ -9,7 +9,4 @@
       %p こんにちは、#{@player.name}
       #messages
         = render @messages
-      %form
-        %label Say something:
-        %br
-        %input{ type: 'text', data: { behavior: 'room_speaker' } }
+      = render '/messages/message_form'
