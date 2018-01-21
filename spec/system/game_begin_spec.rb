@@ -43,7 +43,7 @@ feature 'ゲームを開始する', type: :system do
 
     scenario 'メッセージのやり取りをする' do
       expect(current_path).to eq rooms_path
-      expect(page).to have_content 'Say something' # wait to page　
+      expect(page).to have_content 'Say something' # wait for page rendering
 
       # 自分が送ったメッセージ
       message = 'How are you?'
