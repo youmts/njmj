@@ -9,10 +9,12 @@ feature 'ゲームを開始する', type: :system do
 
   scenario '部屋に入る' do
     visit root_path
+    expect(page).to have_title 'Home'
     expect(page).to have_content 'ゲームを開始'
 
     click_button 'ゲームを開始'
 
+    expect(page).to have_title 'Room'
     yamada = Player.last
 
     expect(page).to have_content 'こんにちは'
@@ -42,7 +44,7 @@ feature 'ゲームを開始する', type: :system do
     end
 
     scenario 'メッセージのやり取りをする' do
-      expect(current_path).to eq rooms_path
+      expect(page).to have_title 'Room'
       expect(page).to have_content 'Say something' # wait for page rendering
 
       # 自分が送ったメッセージ
@@ -65,5 +67,19 @@ feature 'ゲームを開始する', type: :system do
       expect(messages_div).not_to have_content suzuki.name
       expect(messages_div).not_to have_content suzuki_message.content
     end
+  end
+
+  def js_app_room_presence
+    !evaluate_script('App.room === null')
+  end
+
+  scenario '部屋に入った後homeに遷移するとunsubscribeしていること' do
+    start_game
+    expect(page).to have_title('Room')
+    expect(js_app_room_presence).to be_truthy
+
+    click_link('NJMJ')
+    expect(page).to have_title('Home')
+    expect(js_app_room_presence).to be_falsey # unsubscribeするとApp.roomがnullになる
   end
 end
